@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,6 @@ WSGI_APPLICATION = 'foodOnline_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-print(config('DB_USER'), type(config('DB_USER')))
-print(config('DB_PASSWORD'), type(config('DB_PASSWORD')))
 
 DATABASES = {
     'default': {
@@ -89,6 +89,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'accounts.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

@@ -6,11 +6,17 @@ from . forms import UserForm
 # Create your views here.
 
 def registerUser(request):
-    form = UserForm()
 
-    context = {
-        'form' : form
-    }
+    if request.method == 'POST':
+        print(request.POST)
+        return HttpResponse("ok")
+    
+    if request.method == 'GET':
+        form = UserForm()
 
-    return render(request, 'accounts/registerUser.html',context=context)
+        context = {
+            'form' : form
+        }
+
+        return render(request, 'accounts/registerUser.html',context=context)
 

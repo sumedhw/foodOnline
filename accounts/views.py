@@ -7,7 +7,7 @@ from . models import User
 # Create your views here.
 
 def registerUser(request):
-
+    form = UserForm(request.POST)
     if request.method == 'POST':
         print(request.POST)
         form = UserForm(request.POST)
@@ -33,6 +33,8 @@ def registerUser(request):
             user.save()
             print('User is created')
             return redirect('registerUser')
+        else:
+            print(form.errors)
             
             
 
@@ -40,9 +42,9 @@ def registerUser(request):
     if request.method == 'GET':
         form = UserForm()
 
-        context = {
-            'form' : form
-        }
+    context = {
+        'form' : form
+    }
 
-        return render(request, 'accounts/registerUser.html',context=context)
+    return render(request, 'accounts/registerUser.html',context=context)
 
